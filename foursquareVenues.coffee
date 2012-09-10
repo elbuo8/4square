@@ -3,7 +3,7 @@ request = require 'request'
 
 module.exports = (client_id, client_secret) ->
 	#ll, near, llAcc, alt, altAcc, query, limit, intent, radius, sw, ne, categoryId, url, providerId, linkedId 
-	return { getVenues: (params) ->
+	return { getVenues: (params, callback) ->
 		
 		# Add parameters to query
 		urlString = "https://api.foursquare.com/v2/venues/search?"
@@ -38,8 +38,17 @@ module.exports = (client_id, client_secret) ->
 		
 		#HTTP Request to 4square
 		request urlString, (error, response, body) ->
-			JSON.parse(body) if !error && response.statusCode == 200
+			
+			#Parse response from 4square to user
+			callback(null, JSON.parse(body)) if !error && response.statusCode == 200
+			callback("400", null) if response.statusCode == 400
+			callback("401", null) if response.statusCode == 401
+			callback("403", null) if response.statusCode == 403
+			callback("404", null) if response.statusCode == 404
+			callback("405", null) if response.statusCode == 405
+			callback("409", null) if response.statusCode == 409
+			callback("500", null) if response.statusCode == 500
+				
+		}	
 
 
-	}
-	

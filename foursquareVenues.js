@@ -8,7 +8,7 @@
 
   module.exports = function(client_id, client_secret) {
     return {
-      getVenues: function(params) {
+      getVenues: function(params, callback) {
         var date, day, month, today, urlString;
         urlString = "https://api.foursquare.com/v2/venues/search?";
         if (params.ll != null) {
@@ -75,7 +75,28 @@
         urlString += "&v=" + date;
         return request(urlString, function(error, response, body) {
           if (!error && response.statusCode === 200) {
-            return JSON.parse(body);
+            callback(null, JSON.parse(body));
+          }
+          if (response.statusCode === 400) {
+            callback("400", null);
+          }
+          if (response.statusCode === 401) {
+            callback("401", null);
+          }
+          if (response.statusCode === 403) {
+            callback("403", null);
+          }
+          if (response.statusCode === 404) {
+            callback("404", null);
+          }
+          if (response.statusCode === 405) {
+            callback("405", null);
+          }
+          if (response.statusCode === 409) {
+            callback("409", null);
+          }
+          if (response.statusCode === 500) {
+            return callback("500", null);
           }
         });
       }
