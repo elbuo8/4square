@@ -4,13 +4,19 @@
 
   require('coffee-script');
 
-  foursquare = (require('./foursquarevenues'))("client_idKEY", "client_secretKEY");
+  foursquare = (require('./foursquarevenues'))("CLIENT_ID_KEY", "CLIENT_SECRET_KEY");
 
   params = {
     "ll": "40.7,-74"
   };
 
   foursquare.getVenues(params, function(error, venues) {
+    if (!error) {
+      return console.log(venues);
+    }
+  });
+
+  foursquare.exploreVenues(params, function(error, venues) {
     if (!error) {
       return console.log(venues);
     }

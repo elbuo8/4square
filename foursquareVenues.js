@@ -7,9 +7,20 @@
   request = require('request');
 
   module.exports = function(client_id, client_secret) {
+    var date, day, month, today;
+    today = new Date();
+    month = today.getMonth() + 1;
+    if (month < 10) {
+      month = "0" + month;
+    }
+    day = today.getDate();
+    if (day < 10) {
+      day = "0" + day;
+    }
+    date = today.getFullYear() + month + day;
     return {
       getVenues: function(params, callback) {
-        var date, day, month, today, urlString;
+        var urlString;
         urlString = "https://api.foursquare.com/v2/venues/search?";
         if (params.ll != null) {
           urlString += "&ll=" + params.ll;
@@ -62,16 +73,73 @@
         if (client_secret != null) {
           urlString += "&client_secret=" + client_secret;
         }
-        today = new Date();
-        month = today.getMonth() + 1;
-        if (month < 10) {
-          month = "0" + month;
+        urlString += "&v=" + date;
+        return request(urlString, function(error, response, body) {
+          if (!error && response.statusCode === 200) {
+            callback(null, JSON.parse(body));
+          }
+          if (response.statusCode === 400) {
+            callback("400", null);
+          }
+          if (response.statusCode === 401) {
+            callback("401", null);
+          }
+          if (response.statusCode === 403) {
+            callback("403", null);
+          }
+          if (response.statusCode === 404) {
+            callback("404", null);
+          }
+          if (response.statusCode === 405) {
+            callback("405", null);
+          }
+          if (response.statusCode === 409) {
+            callback("409", null);
+          }
+          if (response.statusCode === 500) {
+            return callback("500", null);
+          }
+        });
+      },
+      exploreVenues: function(params, callback) {
+        var urlString;
+        urlString = "https://api.foursquare.com/v2/venues/explore?";
+        if (params.ll != null) {
+          urlString += "&ll=" + params.ll;
         }
-        day = today.getDate();
-        if (day < 10) {
-          day = "0" + day;
+        if (params.near != null) {
+          urlString += "&near=" + params.near;
         }
-        date = today.getFullYear() + month + day;
+        if (params.llAcc != null) {
+          urlString += "&llAcc=" + params.llAcc;
+        }
+        if (params.alt != null) {
+          urlString += "&alt=" + params.alt;
+        }
+        if (params.altAcc != null) {
+          urlString += "&altAcc=" + params.altAcc;
+        }
+        if (params.query != null) {
+          urlString += "&ll=query" + params.query;
+        }
+        if (params.limit != null) {
+          urlString += "&limit=" + params.limit;
+        }
+        if (params.section != null) {
+          urlString += "&section=" + params.section;
+        }
+        if (params.radius != null) {
+          urlString += "&radius=" + params.radius;
+        }
+        if (params.novelty != null) {
+          urlString += "&novelty=" + params.novelty;
+        }
+        if (client_id != null) {
+          urlString += "&client_id=" + client_id;
+        }
+        if (client_secret != null) {
+          urlString += "&client_secret=" + client_secret;
+        }
         urlString += "&v=" + date;
         return request(urlString, function(error, response, body) {
           if (!error && response.statusCode === 200) {
