@@ -12,7 +12,9 @@
   },
   "keywords": [
     "foursquare",
-    "node"
+		"venues",
+		"search",
+		"explore"
   ],
   "author": "Yamil Asusta (elbuo8)",
   "license": "BSD",
