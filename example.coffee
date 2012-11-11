@@ -1,5 +1,5 @@
 require 'coffee-script'
-foursquare = (require './foursquarevenues')("CLIENT_ID_KEY", "CLIENT_SECRET_KEY")
+foursquare = (require './foursquarevenues')("CLIENT_ID", "CLIENT_SECRET")
 
 params = {
 	"ll" : "40.7,-74"

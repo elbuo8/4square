@@ -9,7 +9,7 @@ module.exports = (client_id, client_secret) ->
 	month = "0" + month if month < 10
 	day = today.getDate()
 	day = "0" + day if day < 10
-	date = today.getFullYear() + month + day
+	date = today.getFullYear() + "" + month + "" + day
 	 
 	#ll, near, llAcc, alt, altAcc, query, limit, intent, radius, sw, ne, categoryId, url, providerId, linkedId 
 	getVenues: (params, callback) ->
