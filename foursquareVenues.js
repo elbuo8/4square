@@ -38,7 +38,7 @@
           urlString += "&altAcc=" + params.altAcc;
         }
         if (params.query != null) {
-          urlString += "&ll=query" + params.query;
+          urlString += "&query=" + params.query;
         }
         if (params.limit != null) {
           urlString += "&limit=" + params.limit;
@@ -120,7 +120,7 @@
           urlString += "&altAcc=" + params.altAcc;
         }
         if (params.query != null) {
-          urlString += "&ll=query" + params.query;
+          urlString += "&query=" + params.query;
         }
         if (params.limit != null) {
           urlString += "&limit=" + params.limit;

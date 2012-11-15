@@ -21,7 +21,7 @@ module.exports = (client_id, client_secret) ->
 		urlString += "&llAcc=" + params.llAcc if params.llAcc?
 		urlString += "&alt=" + params.alt if params.alt?
 		urlString += "&altAcc=" + params.altAcc if params.altAcc?
-		urlString += "&ll=query" + params.query if params.query?
+		urlString += "&query=" + params.query if params.query?
 		urlString += "&limit=" + params.limit if params.limit?
 		urlString += "&intent=" + params.intent if params.intent?
 		urlString += "&radius=" + params.radius if params.radius?
@@ -61,7 +61,7 @@ module.exports = (client_id, client_secret) ->
 		urlString += "&llAcc=" + params.llAcc if params.llAcc?
 		urlString += "&alt=" + params.alt if params.alt?
 		urlString += "&altAcc=" + params.altAcc if params.altAcc?
-		urlString += "&ll=query" + params.query if params.query?
+		urlString += "&query=" + params.query if params.query?
 		urlString += "&limit=" + params.limit if params.limit?
 		urlString += "&section=" + params.section if params.section?
 		urlString += "&radius=" + params.radius if params.radius?
