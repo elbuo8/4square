@@ -1,6 +1,6 @@
 {
   "name": "foursquarevenues",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Simple query to 4square venue's api",
   "main": "./foursquarevenues",
   "scripts": {
