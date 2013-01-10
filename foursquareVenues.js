@@ -171,7 +171,8 @@
       getVenue: function(params, callback) {
         var urlString;
         urlString = "https://api.foursquare.com/v2/venues/";
-        urlString += params.venue_id != null;
+        urlString += params.venue_id;
+        urlString += "?v=" + date;
         if (client_id != null) {
           urlString += "&client_id=" + client_id;
         }
