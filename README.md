@@ -3,6 +3,10 @@
 This is a simple module to access 4squares' venue API.  
 
 	npm install foursquarevenues
+	
+##License##
+
+MIT
 
 ## Example  
 
