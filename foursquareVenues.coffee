@@ -21,7 +21,7 @@ module.exports = (client_id, client_secret) ->
 	getVenues: (params, callback) ->
 		
 		# Add parameters to query
-		urlString = "https://api.foursquare.com/v2/venues/search?" + querystring.stringify(params) + querystring.stringify(credentials)	
+		urlString = "https://api.foursquare.com/v2/venues/search?" + querystring.stringify(params) + '&' + querystring.stringify(credentials)	
 			
 		#HTTP Request to 4square
 		request urlString, (error, response, body) ->
@@ -33,7 +33,7 @@ module.exports = (client_id, client_secret) ->
 	exploreVenues: (params, callback) ->
 		
 		# Add parameters to query
-		urlString = "https://api.foursquare.com/v2/venues/explore?" + querystring.stringify(params) + querystring.stringify(credentials)	
+		urlString = "https://api.foursquare.com/v2/venues/explore?" + querystring.stringify(params) +'&' +querystring.stringify(credentials)	
 
 
 		#HTTP Request to 4square
@@ -47,7 +47,7 @@ module.exports = (client_id, client_secret) ->
 	getVenue: (params, callback) ->
 		
 		# Add parameters to query
-		urlString = "https://api.foursquare.com/v2/venues/" + querystring.stringify(params) + querystring.stringify(credentials)	
+		urlString = "https://api.foursquare.com/v2/venues/" + querystring.stringify(params) + '&' +querystring.stringify(credentials)	
 
 		
 		#HTTP Request to 4square
