@@ -30,7 +30,7 @@
       getVenues: function(params, callback) {
         var urlString;
 
-        urlString = "https://api.foursquare.com/v2/venues/search?" + querystring.stringify(params) + querystring.stringify(credentials);
+        urlString = "https://api.foursquare.com/v2/venues/search?" + querystring.stringify(params) + '&' + querystring.stringify(credentials);
         return request(urlString, function(error, response, body) {
           if (!error && response.statusCode === 200) {
             callback(null, JSON.parse(body));
@@ -41,7 +41,7 @@
       exploreVenues: function(params, callback) {
         var urlString;
 
-        urlString = "https://api.foursquare.com/v2/venues/explore?" + querystring.stringify(params) + querystring.stringify(credentials);
+        urlString = "https://api.foursquare.com/v2/venues/explore?" + querystring.stringify(params)(+'&' + querystring.stringify(credentials));
         return request(urlString, function(error, response, body) {
           if (!error && response.statusCode === 200) {
             callback(null, JSON.parse(body));
@@ -52,7 +52,7 @@
       getVenue: function(params, callback) {
         var urlString;
 
-        urlString = "https://api.foursquare.com/v2/venues/" + querystring.stringify(params) + querystring.stringify(credentials);
+        urlString = "https://api.foursquare.com/v2/venues/" + querystring.stringify(params) + '&' + querystring.stringify(credentials);
         return request(urlString, function(error, response, body) {
           if (!error && response.statusCode === 200) {
             callback(null, JSON.parse(body));
