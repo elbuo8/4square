@@ -47,7 +47,7 @@ module.exports = (client_id, client_secret) ->
 	getVenue: (params, callback) ->
 		
 		# Add parameters to query
-		urlString = "https://api.foursquare.com/v2/venues/" + querystring.stringify(params) + '&' + querystring.stringify(credentials)	
+		urlString = "https://api.foursquare.com/v2/venues/" + params.venue_id + '?' + querystring.stringify(credentials)	
 
 		
 		#HTTP Request to 4square
