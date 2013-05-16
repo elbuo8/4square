@@ -26,22 +26,25 @@ module.exports = (client_id, client_secret) ->
 		#HTTP Request to 4square
 		request urlString, (error, response, body) ->
 			#Parse response from 4square to user
-			callback(null, JSON.parse(body)) if !error && response.statusCode == 200 
-			callback(JSON.parse(body), null)
+			body = JSON.parse(body)
+			err = body if body.meta.code >= 300
+			data = body if 200 <= body.meta.code < 400
+			callback(err, data)
 			
 	#ll, near, llAcc, alt, altAcc, radius, section, query, limit, novelty
 	exploreVenues: (params, callback) ->
 		
 		# Add parameters to query
-		urlString = "https://api.foursquare.com/v2/venues/explore?" + querystring.stringify(params) +'&' + querystring.stringify(credentials)	
-
+		urlString = "https://api.foursquare.com/v2/venues/explore?" + querystring.stringify(params) + '&' + querystring.stringify(credentials)	
 
 		#HTTP Request to 4square
 		request urlString, (error, response, body) ->
 
 			#Parse response from 4square to user
-			callback(null, JSON.parse(body)) if !error && response.statusCode == 200
-			callback(JSON.parse(body), null)
+			body = JSON.parse(body)
+			err = body if body.meta.code >= 300
+			data = body if 200 <= body.meta.code < 400
+			callback(err, data)
 	
 	#venue_id
 	getVenue: (params, callback) ->
@@ -54,6 +57,8 @@ module.exports = (client_id, client_secret) ->
 		request urlString, (error, response, body) ->
 
 			#Parse response from 4square to user
-			callback(null, JSON.parse(body)) if !error && response.statusCode == 200
-			callback(JSON.parse(body), null) 
+			body = JSON.parse(body)
+			err = body if body.meta.code >= 300
+			data = body if 200 <= body.meta.code < 400
+			callback(err, data)
 
