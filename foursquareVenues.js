@@ -32,21 +32,33 @@
 
         urlString = "https://api.foursquare.com/v2/venues/search?" + querystring.stringify(params) + '&' + querystring.stringify(credentials);
         return request(urlString, function(error, response, body) {
-          if (!error && response.statusCode === 200) {
-            callback(null, JSON.parse(body));
+          var data, err, _ref;
+
+          body = JSON.parse(body);
+          if (body.meta.code >= 300) {
+            err = body;
           }
-          return callback(JSON.parse(body), null);
+          if ((200 <= (_ref = body.meta.code) && _ref < 400)) {
+            data = body;
+          }
+          return callback(err, data);
         });
       },
       exploreVenues: function(params, callback) {
         var urlString;
 
-        urlString = "https://api.foursquare.com/v2/venues/explore?" + querystring.stringify(params)(+'&' + querystring.stringify(credentials));
+        urlString = "https://api.foursquare.com/v2/venues/explore?" + querystring.stringify(params) + '&' + querystring.stringify(credentials);
         return request(urlString, function(error, response, body) {
-          if (!error && response.statusCode === 200) {
-            callback(null, JSON.parse(body));
+          var data, err, _ref;
+
+          body = JSON.parse(body);
+          if (body.meta.code >= 300) {
+            err = body;
           }
-          return callback(JSON.parse(body), null);
+          if ((200 <= (_ref = body.meta.code) && _ref < 400)) {
+            data = body;
+          }
+          return callback(err, data);
         });
       },
       getVenue: function(params, callback) {
@@ -54,10 +66,16 @@
 
         urlString = "https://api.foursquare.com/v2/venues/" + params.venue_id + '?' + querystring.stringify(credentials);
         return request(urlString, function(error, response, body) {
-          if (!error && response.statusCode === 200) {
-            callback(null, JSON.parse(body));
+          var data, err, _ref;
+
+          body = JSON.parse(body);
+          if (body.meta.code >= 300) {
+            err = body;
           }
-          return callback(JSON.parse(body), null);
+          if ((200 <= (_ref = body.meta.code) && _ref < 400)) {
+            data = body;
+          }
+          return callback(err, data);
         });
       }
     };
