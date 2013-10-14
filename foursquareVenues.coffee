@@ -5,12 +5,7 @@ querystring = require 'querystring'
 module.exports = (client_id, client_secret) ->
 	
 	#Add Date to query (4square standard)
-	today = new Date()
-	month = (today.getMonth() + 1)
-	month = '0' + month if month < 10
-	day = today.getDate()
-	day = '0' + day if day < 10
-	date = today.getFullYear() + '' + month + '' + day
+	date = '20131014'
 	
 	credentials = 
 		'v': date,
