@@ -4,7 +4,7 @@
 
   require('coffee-script');
 
-  foursquare = (require('./foursquarevenues'))(process.env.client_id, process.env.client_secret);
+  foursquare = (require('./foursquarevenues'))(process.env.foursquareID, process.env.foursquareSecret);
 
   params = {
     "ll": "40.7,-74"
