@@ -1,8 +1,8 @@
 # Foursquare Venues API
 
-This is a simple module to access 4squares' venue API.
+Simple node.js module to access foursquare venue API.
 
-	npm install foursquarevenues
+Forked from [elbuo8's 4square](https://github.com/elbuo8/4square)
 
 ##License##
 
@@ -29,7 +29,3 @@ MIT
 		}
 	});
 ```
-
-
-**Enjoy the usage. You can email me at yamil.asusta@upr.edu for any bugs.**
-
