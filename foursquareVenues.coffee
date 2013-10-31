@@ -12,6 +12,16 @@ module.exports = (client_id, client_secret) ->
 		'client_id': client_id,
 		'client_secret': client_secret
 
+	# params is ignored
+	getCategories: (params, callback) ->
+
+		# Add parameters to query
+		urlString = "https://api.foursquare.com/v2/venues/categories?" + querystring.stringify(credentials)
+
+		#HTTP Request to 4square
+		request urlString, (error, response, body) ->
+			handleRes(response, body, callback)
+
 	#ll, near, llAcc, alt, altAcc, query, limit, intent, radius, sw, ne, categoryId, url, providerId, linkedId
 	getVenues: (params, callback) ->
 
