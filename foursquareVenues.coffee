@@ -54,6 +54,5 @@ module.exports = (client_id, client_secret) ->
 			handleRes(response, body, callback)
 
 handleRes = (res, body, callback) ->
-	if res.statusCode >= 300 then callback(body, null);
-	callback(null, JSON.parse(body));
+	if res.statusCode >= 300 then callback(body, null) else callback(null, JSON.parse(body))
 
