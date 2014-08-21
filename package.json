@@ -20,10 +20,7 @@
   "author": "Yamil Asusta (elbuo8)",
   "license": "MIT",
   "dependencies": {
-    "request": "~2.16.6",
-    "coffee-script": "~1.3.3"
-  },
-  "devDependencies": {
+    "request": "~2.40.0",
     "coffee-script": "~1.3.3"
   }
 }
