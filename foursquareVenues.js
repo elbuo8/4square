@@ -2,8 +2,6 @@
 (function() {
   var handleRes, querystring, request;
 
-  require('coffee-script');
-
   request = require('request');
 
   querystring = require('querystring');
