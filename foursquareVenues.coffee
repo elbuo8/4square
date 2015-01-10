@@ -1,4 +1,3 @@
-require 'coffee-script'
 request = require 'request'
 querystring = require 'querystring'
 
