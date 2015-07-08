@@ -43,9 +43,9 @@
           return handleRes(response, body, callback);
         });
       },
-      getVenueHours: function(params, callback) {
+      getVenueAspect: function(params, callback) {
         var urlString;
-        urlString = "https://api.foursquare.com/v2/venues/" + params.venue_id + "/hours" + '?' + querystring.stringify(credentials);
+        urlString = "https://api.foursquare.com/v2/venues/" + params.venue_id + "/" + params.aspect_name + '?' + querystring.stringify(credentials);
         return request(urlString, function(error, response, body) {
           return handleRes(response, body, callback);
         });
