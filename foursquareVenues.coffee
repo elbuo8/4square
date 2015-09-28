@@ -4,7 +4,7 @@ querystring = require 'querystring'
 module.exports = (client_id, client_secret) ->
 
 	#Add Date to query (4square standard)
-	date = '20131014'
+	date = '20140806'
 
 	credentials =
 		'v': date,
