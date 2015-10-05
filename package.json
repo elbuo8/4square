@@ -1,6 +1,6 @@
 {
   "name": "foursquarevenues",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Simple query to 4square venue's api",
   "main": "./foursquareVenues",
   "scripts": {
@@ -20,9 +20,6 @@
   "author": "Yamil Asusta (elbuo8)",
   "license": "MIT",
   "dependencies": {
-    "request": "~2.40.0"
-  },
-  "devDependencies": {
-    "coffee-script": "~1.3.3"
+    "request": "~2.64.0"
   }
 }
