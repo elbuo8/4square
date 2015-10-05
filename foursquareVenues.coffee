@@ -52,6 +52,17 @@ module.exports = (client_id, client_secret) ->
 		request urlString, (error, response, body) ->
 			handleRes(response, body, callback)
 
+	#venue_id, aspect_name
+	getVenueAspect: (params, callback) ->
+
+		# Add parameters to query
+		urlString = "https://api.foursquare.com/v2/venues/" + params.venue_id + "/" + params.aspect_name + '?' + querystring.stringify(credentials)
+
+
+		#HTTP Request to 4square
+		request urlString, (error, response, body) ->
+			handleRes(response, body, callback)
+
 handleRes = (res, body, callback) ->
 	if res.statusCode >= 300 then callback(body, null) else callback(null, JSON.parse(body))
 
