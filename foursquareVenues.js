@@ -19,42 +19,44 @@
         var urlString;
         urlString = "https://api.foursquare.com/v2/venues/categories?" + querystring.stringify(credentials);
         return request(urlString, function(error, response, body) {
-          return handleRes(response, body, callback);
+          return handleRes(error, response, body, callback);
         });
       },
       getVenues: function(params, callback) {
         var urlString;
         urlString = "https://api.foursquare.com/v2/venues/search?" + querystring.stringify(params) + '&' + querystring.stringify(credentials);
         return request(urlString, function(error, response, body) {
-          return handleRes(response, body, callback);
+          return handleRes(error, response, body, callback);
         });
       },
       exploreVenues: function(params, callback) {
         var urlString;
         urlString = "https://api.foursquare.com/v2/venues/explore?" + querystring.stringify(params) + '&' + querystring.stringify(credentials);
         return request(urlString, function(error, response, body) {
-          return handleRes(response, body, callback);
+          return handleRes(error, response, body, callback);
         });
       },
       getVenue: function(params, callback) {
         var urlString;
         urlString = "https://api.foursquare.com/v2/venues/" + params.venue_id + '?' + querystring.stringify(credentials);
         return request(urlString, function(error, response, body) {
-          return handleRes(response, body, callback);
+          return handleRes(error, response, body, callback);
         });
       },
       getVenueAspect: function(params, callback) {
         var urlString;
         urlString = "https://api.foursquare.com/v2/venues/" + params.venue_id + "/" + params.aspect_name + '?' + querystring.stringify(credentials);
         return request(urlString, function(error, response, body) {
-          return handleRes(response, body, callback);
+          return handleRes(error, response, body, callback);
         });
       }
     };
   };
 
-  handleRes = function(res, body, callback) {
-    if (res.statusCode >= 300) {
+  handleRes = function(error, res, body, callback) {
+    if (error) {
+      return callback(error, null);
+    } else if (res.statusCode >= 300) {
       return callback(body, null);
     } else {
       return callback(null, JSON.parse(body));
