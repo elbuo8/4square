@@ -1,10 +1,11 @@
 {
   "name": "foursquarevenues",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Simple query to 4square venue's api",
-  "main": "./foursquareVenues",
+  "main": "./lib/foursquareVenues",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava",
+    "coverage": "nyc npm test"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,10 @@
   "author": "Yamil Asusta (elbuo8)",
   "license": "MIT",
   "dependencies": {
-    "request": "~2.64.0"
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "nyc": "^10.1.2"
   }
 }
