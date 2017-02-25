@@ -30,6 +30,15 @@ test.cb('getVenues', t => {
   });
 });
 
+test.cb('getVenues without auth', t => {
+  const fNoAuth = require('../')();
+  fNoAuth._baseURL = 'http://localhost:8000/';
+  fNoAuth.getVenues({test: 1}, (err, body) => {
+    t.is(body, '/search?test=1&v=20140806');
+    t.end();
+  });
+});
+
 test.cb('exploreVenues', t => {
   fsq.exploreVenues({test: 1}, (err, body) => {
     t.is(body, '/explore?test=1&v=20140806&client_id=test&client_secret=test');
